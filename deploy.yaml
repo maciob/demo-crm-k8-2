@@ -18,7 +18,7 @@ spec:
       - name: mongo
         image: gcr.io/total-earth-365910/mongo:latest
         ports:
-        - port: 27017
+          - port: 27017
           targetPort: 27017
         volumeMounts:
           - name: mongo-storage
