@@ -25,7 +25,7 @@ spec:
             mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
-        name: mongo-storage
+        name: my-claim
       spec:
         storageClassName: slow
         accessModes: ["ReadWriteOnce"]

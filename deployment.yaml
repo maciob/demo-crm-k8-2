@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo
+spec:
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: pwstaging/demo-crm:latest
+        ports:
+        - containerPort: 3000
+#        envFrom:
+#          - configMapRef:
+#            name: myConfigMap
+        env:
+          - name: databasePort
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: databasePort
+          - name: databaseHost
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: databaseHost
+
+          - name: MONGODB_URI
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: MONGODB_URI
+          - name: LOG_LEVEL
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: LOG_LEVEL
+          - name: PERSISTENCE
+            valueFrom:
+              configMapKeyRef:
+                name: mongo-config
+                key: PERSISTENCE

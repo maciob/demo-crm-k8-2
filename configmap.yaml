@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+  # property-like keys; each key maps to a simple value
+  databasePort: "27017"
+  databaseHost: "mongo"
+  MONGODB_URI: "mongodb://mongo:27017"
+  LOG_LEVEL: "info"
+  PERSISTENCE: "true"
+  # file-like keys
+  application.properties: |
+    server.port = 3000
+    spring.application.name = demo
