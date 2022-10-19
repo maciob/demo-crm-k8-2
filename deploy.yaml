@@ -7,6 +7,7 @@ spec:
     matchLabels:
       role: mongo
       environment: test
+  serviceName: "mongo"
   template:
     metadata:
       labels:
