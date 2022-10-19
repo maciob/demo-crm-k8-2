@@ -4,4 +4,4 @@ metadata:
   name: slow
 provisioner: kubernetes.io/gce-pd
 parameters:
-  type: gp2
+  fsType: ext4
