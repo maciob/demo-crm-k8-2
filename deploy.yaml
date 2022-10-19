@@ -27,7 +27,7 @@ spec:
     - metadata:
         name: mongo-storage
       spec:
-        storageClassName: standard
+        storageClassName: slow
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
