@@ -21,7 +21,7 @@ spec:
         ports:
           - containerPort: 27017
         volumeMounts:
-          - name: mongo-storage
+          - name: my-claim
             mountPath: /data/db
   volumeClaimTemplates:
     - metadata:
