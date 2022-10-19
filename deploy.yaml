@@ -1,21 +1,33 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: demo-deployment
-  labels:
-    app: demo
-
+  name: mongo
 spec:
   selector:
     matchLabels:
-      app: demo
+      role: mongo
+      environment: test
   template:
     metadata:
       labels:
-        app: demo
+        role: mongo
+        environment: test
     spec:
       containers:
-      - name: demo
+      - name: mongo
         image: gcr.io/total-earth-365910/mongo:latest
         ports:
-        - containerPort: 27017
+          - port: 27017
+            containerPort: 27017
+        volumeMounts:
+          - name: mongo-storage
+            mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-storage
+      spec:
+        storageClassName: "fast"
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
