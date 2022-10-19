@@ -8,6 +8,7 @@ spec:
       role: mongo
       environment: test
   serviceName: "mongo"
+  replicas: 3
   template:
     metadata:
       labels:
